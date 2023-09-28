@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #Bash script that displays numbers from 1 to 100. fizzbuzz style
 
 for num in {1..100}; do
