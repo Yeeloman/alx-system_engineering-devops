@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Bash script that manages manage_my_process
+
+if [[ "$#" -ne 2 ]]; then
+	echo "Usage: manage_my_process {start|stop|restart}"
+fi
+
+case $1 in
+"start")
+	./manage_my_process
+	pgrep -f manage_my_process >"/var/run/my_process.pid"
+	echo "manage_my_process started"
+	;;
+"stop") ;;
+"restart") ;;
+*)
+	echo "Usage: manage_my_process {start|stop|restart}"
+	;;
+esac
