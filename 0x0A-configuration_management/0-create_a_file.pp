@@ -1,3 +1,4 @@
+# Create a file using Puppet
 file { '/tmp/school':
   ensure  => present,
   mode    => '0744',
