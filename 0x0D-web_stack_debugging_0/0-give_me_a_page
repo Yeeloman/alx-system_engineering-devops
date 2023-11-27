@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# commands needed for debugging
+cd /etc/apache2/ || return
+echo "DocumentRoot /var/www/html" >> apache2.conf
+echo "Hello Holberton" > /var/www/html/index.html
+service apache2 restart
