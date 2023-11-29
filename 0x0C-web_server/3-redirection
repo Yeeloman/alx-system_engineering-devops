@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #Configure your Nginx server so that /redirect_me is redirecting
 sudo apt-get -y update
-sudo apt -y upgrade
 sudo apt -y install nginx
 file=/var/www/html/index.html
 file_re=/etc/nginx/sites-available/default
