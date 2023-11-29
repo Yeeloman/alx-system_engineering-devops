@@ -2,7 +2,6 @@
 #Configure your Nginx server so that /redirect_me is redirecting
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo bash -c "echo 'Hello World!' > /var/www/html/index.html"
-Str="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=8CBjKLGwLqE permanent;"
-sudo sed -i "s/server_name _;/$Str/" /etc/nginx/sites-available/default
+String="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com permanent;"
+sudo sed -i "s/server_name _;/$String/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
