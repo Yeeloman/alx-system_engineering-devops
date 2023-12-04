@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Update the system
 sudo apt-get update
-sudo apt-get upgrade -y
+# sudo apt-get upgrade -y
 # Install HAProxy
 sudo apt-get install haproxy -y
 sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
