@@ -3,7 +3,6 @@
 
 apt update
 apt install nginx -y
-cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 sh -c 'echo "server {
   listen 80;
 }" >> /etc/nginx/sites-available/default'
