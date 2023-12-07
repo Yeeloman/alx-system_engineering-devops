@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # script that configures a server to listen on port 80
-
-apt update
-apt install nginx -y
-sh -c 'echo "server {
-  listen 80;
-}" >> /etc/nginx/sites-available/default'
+cd /etc/nginx/sites-enabled/ || exit
+rm default
+ln -s /etc/nginx/sites-available/default default
 service nginx restart
