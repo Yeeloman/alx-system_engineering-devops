@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #run whoami command on a specific user
-su -c 'whoami' "$1"
+sudo su -c 'whoami' "$1"
