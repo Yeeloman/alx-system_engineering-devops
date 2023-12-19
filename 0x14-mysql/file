@@ -1,0 +1,9 @@
+to install mysql version 5.7
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.12-1_all.deb
+Select the ubuntu bionic option then select mysql version
+sudo apt update
+if you cant update run if you are using apt
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
+then update
+sudo apt-get install mysql-community-server=5.7.42-1ubuntu18.04 mysql-client=5.7.42-1ubuntu18.04
