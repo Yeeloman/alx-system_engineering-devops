@@ -1,18 +1,31 @@
 #!/usr/bin/python3
-"""
-this doc for module
-"""
+"""Module that consumes the Reddit API and returns the number of subscribers"""
 import requests
-
-headers = {"User-Agent": "MyCustomUserAgent/1.0"}
 
 
 def number_of_subscribers(subreddit):
-    """method doc"""
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    response = requests.get(url, allow_redirects=False, headers=headers)
-    if response.status_code == 200:
-        data = response.json()
-        return data["data"]["subscribers"]
-    else:
-        return 0
+    """return number of subs in an existing account
+    subreddit is the target
+     Args:
+        subreddit (str): subreddit
+
+    Returns:
+        int: number of subscribers
+        """
+
+    base_url = 'https://www.reddit.com/r/'
+
+    url = '{}{}/about.json'.format(base_url, subreddit)
+    headers = {
+        'User-Agent':
+        'Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) \
+        Gecko/20100401 Firefox/3.6.3 (FM Scene 4.6.1)'
+    }
+    results = requests.get(
+        url,
+        headers=headers,
+        allow_redirects=False
+    )
+    if results.status_code == 200:
+        return results.json()['data']['subscribers']
+    return 0
