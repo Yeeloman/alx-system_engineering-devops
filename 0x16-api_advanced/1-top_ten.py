@@ -10,20 +10,14 @@ def top_ten(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
     headers = {"User-Agent": "MySecndRedditBot/1.0"}
 
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        response.raise_for_status()
+    response = requests.get(url, headers=headers)
 
-        if response.status_code == 200:
-            data = response.json()
-            if "data" in data and "children" in data["data"]:
-                for post in data["data"]["children"]:
-                    print(post["data"]["title"])
-            else:
-                print("None")
+    if response.status_code == 200:
+        data = response.json()
+        if "data" in data and "children" in data["data"]:
+            for post in data["data"]["children"]:
+                print(post["data"]["title"])
         else:
-            print("Invalid subreddit or other error")
-    except requests.exceptions.HTTPError as errh:
-        print(f"HTTP Error: {errh}")
-    except requests.exceptions.RequestException as err:
-        print(f"Request Exception: {err}")
+            print("None")
+    else:
+        print("Invalid subreddit or other error")
