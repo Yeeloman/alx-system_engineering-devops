@@ -1,18 +1,22 @@
 #!/usr/bin/python3
-"""task 0"""
+"""Module that consumes the Reddit API and returns the number of subscribers"""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """return number of subs in an existing account
-    subreddit is the target
-     Args:
+    """Queries the Reddit API and returns the number of subscribers (not
+    active users, total subscribers) for a given subreddit.
+
+    If not a valid subreddit, return 0.
+    Invalid subreddits may return a redirect to search results. Ensure that
+    you are not following redirects.
+
+    Args:
         subreddit (str): subreddit
 
     Returns:
         int: number of subscribers
-        """
-
+    """
     base_url = 'https://www.reddit.com/r/'
 
     url = '{}{}/about.json'.format(base_url, subreddit)
