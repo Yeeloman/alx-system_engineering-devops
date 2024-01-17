@@ -13,29 +13,15 @@ def recurse(subreddit, hot_list=[], after=None):
     Returns:
         int: number of subscribers
         """
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=100"
-    header = {"User-Agent": "my4rdRedditBot/4.0"}
-    params = {"after": after} if after else {}
-
-    resp = requests.get(
-          url,
-          headers=header,
-          params=params,
-          allow_redirects=False
-          )
-    resp.raise_for_status()
-    if resp.status_code == 200:
-        data = resp.json()
-        if "data" in data and "children" in data["data"]:
-            for post in data["data"]["children"]:
-                hot_list.append(post["data"]["title"])
-            if data["data"]["after"]:
-                return recurse(
-                subreddit,
-                hot_list,
-                after=data["data"]["after"]
-            )
-            else:
-                    return hot_list
-        else:
-            return None
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    headers = {'user-agent': 'custom'}
+    r = requests.get(url, headers=headers, allow_redirects=False)
+    if r.status_code == 200:
+        r = r.json()
+        for post in r.get('data').get('children'):
+            hot_list.append(post.get('data').get('title'))
+        if r.get('data').get('after'):
+            recurse(subreddit, hot_list)
+        return hot_list
+    else:
+        return None
