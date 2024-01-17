@@ -4,7 +4,8 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """return number of subs in an existing account"""
+    """return number of subs in an existing account
+    subreddit is the target"""
 
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {"User-Agent": "MyFirstRedditBot/1.0"}
