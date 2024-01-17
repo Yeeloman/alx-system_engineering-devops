@@ -1,23 +1,39 @@
 #!/usr/bin/python3
-"""2- top ten"""
-
+"""Module to interface with the reddit api"""
 import requests
 
 
 def top_ten(subreddit):
-    """A function that queries the Reddit API and prints the titles
-    of the first 10 hot posts listed for a given subreddit."""
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {"User-Agent": "MySecndRedditBot/1.0"}
+    """Queries the Reddit API and prints the titles of the first 10 hot
+    posts listed for a given subreddit.
 
-    response = requests.get(url, headers=headers)
+    If not a valid subreddit, print None.
+    Invalid subreddits may return a redirect to search results. Ensure
+    that you are not following redirects.
 
+    Args:
+        subreddit (str): subreddit
+
+    Returns:
+        str: titles of the first 10 hot posts
+    """
+    base_url = 'https://www.reddit.com'
+    sort = 'top'
+    limit = 10
+    url = '{}/r/{}/.json?sort={}&limit={}'.format(
+        base_url, subreddit, sort, limit)
+    headers = {
+        'User-Agent':
+        'Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) \
+        Gecko/20100401 Firefox/3.6.3 (FM Scene 4.6.1)'
+    }
+    response = requests.get(
+        url,
+        headers=headers,
+        allow_redirects=False
+    )
     if response.status_code == 200:
-        data = response.json()
-        if "data" in data and "children" in data["data"]:
-            for post in data["data"]["children"]:
-                print(post["data"]["title"])
-        else:
-            print("None")
+        for post in response.json()['data']['children'][0:10]:
+            print(post['data']['title'])
     else:
-        print("Invalid subreddit or other error")
+        print(None)
