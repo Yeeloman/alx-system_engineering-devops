@@ -5,14 +5,8 @@ import requests
 
 
 def top_ten(subreddit):
-    """return top 10 hot posts for a given subreddit
-    subreddit is the target
-     Args:
-        subreddit (str): subreddit
-
-    Returns:
-        int: number of subscribers
-        """
+    """A function that queries the Reddit API and prints the titles
+    of the first 10 hot posts listed for a given subreddit."""
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
     headers = {"User-Agent": "MySecndRedditBot/1.0"}
 
