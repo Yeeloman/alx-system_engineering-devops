@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""
-0x16. API advanced
-"""
-
+"""Module that consumes the Reddit API and returns a list containing the
+titles of all hot articles for a given subreddit."""
 import requests
 
 

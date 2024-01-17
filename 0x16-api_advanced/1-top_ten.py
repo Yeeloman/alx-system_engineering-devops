@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-0x16. API advanced
-"""
-
+"""Module to interface with the reddit api"""
 import requests
 
 
