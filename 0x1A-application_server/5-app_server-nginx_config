@@ -30,7 +30,7 @@ server {
         proxy_pass http://127.0.0.1:5002/api;
     }
     location /static {
-        alias web_dynamic/static/;
+        alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static;
     }
     error_page 404 /404.html;
     location /404 {
