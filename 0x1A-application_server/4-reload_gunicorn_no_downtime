@@ -1,1 +1,3 @@
-haha
+#!/usr/bin/env bash
+# script for task 7
+pgrep gunicorn | xargs -I {} kill -HUP {}
